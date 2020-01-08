@@ -1,9 +1,9 @@
 <template>
-  <a :class="className" class="link--mallki" href="#">
+  <div :class="className" class="link--mallki">
     {{ text }}
     <span :data-letters="text" />
     <span :data-letters="text" />
-  </a>
+  </div>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
     },
     text: {
       type: String,
-      default: 'vue-element-admin'
+      default: '辅助定密'
     }
   }
 }

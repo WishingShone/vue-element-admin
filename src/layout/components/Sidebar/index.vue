@@ -34,11 +34,20 @@ export default {
     activeMenu() {
       const route = this.$route
       const { meta, path } = route
+      console.log('*******************')
+      console.log(route)
+      console.log(meta.title)
+      console.log(meta.ishidden)
+      console.log('*******************')
       // if set path, the sidebar will highlight the path you set
-      if (meta.activeMenu) {
-        return meta.activeMenu
+      if (!meta.ishidden) {
+        if (meta.activeMenu) {
+          return meta.activeMenu
+        }
+        return path
+      } else {
+        return null
       }
-      return path
     },
     showLogo() {
       return this.$store.state.settings.sidebarLogo

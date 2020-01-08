@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 
 export function login(data) {
+  // 后台验证验证登录信息
   return request({
     url: '/user/login',
     method: 'post',

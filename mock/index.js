@@ -5,12 +5,18 @@ import user from './user'
 import role from './role'
 import article from './article'
 import search from './remote-search'
+import secret from './secret'
+import project from './project'
+import template from './template'
 
 const mocks = [
   ...user,
   ...role,
   ...article,
-  ...search
+  ...search,
+  ...project,
+  ...secret,
+  ...template
 ]
 
 // for front mock

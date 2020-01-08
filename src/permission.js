@@ -19,10 +19,10 @@ router.beforeEach(async(to, from, next) => {
 
   // determine whether the user has logged in
   const hasToken = getToken()
-
+  // 验证是否带token
   if (hasToken) {
+    // 如果是在登录页，跳转到首页
     if (to.path === '/login') {
-      // if is logged in, redirect to the home page
       next({ path: '/' })
       NProgress.done()
     } else {
@@ -36,13 +36,14 @@ router.beforeEach(async(to, from, next) => {
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
           const { roles } = await store.dispatch('user/getInfo')
 
-          // generate accessible routes map based on roles
+          // generate accessible routes map based on roles 生成可访问的路由表
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
-          // dynamically add accessible routes
+          // 动态添加可访问路由表
           router.addRoutes(accessRoutes)
 
           // hack method to ensure that addRoutes is complete
+          // hack方法 确保addRoutes已完成
           // set the replace: true, so the navigation will not leave a history record
           next({ ...to, replace: true })
         } catch (error) {
@@ -59,6 +60,7 @@ router.beforeEach(async(to, from, next) => {
 
     if (whiteList.indexOf(to.path) !== -1) {
       // in the free login whitelist, go directly
+      // 在免登录白名单，直接进入
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.

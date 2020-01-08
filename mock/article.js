@@ -1,5 +1,4 @@
 import Mock from 'mockjs'
-
 const List = []
 const count = 100
 
@@ -23,6 +22,7 @@ for (let i = 0; i < count; i++) {
     comment_disabled: true,
     pageviews: '@integer(300, 5000)',
     image_uri,
+    remark: '@title(15, 30)',
     platforms: ['a-platform']
   }))
 }

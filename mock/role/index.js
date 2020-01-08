@@ -6,21 +6,21 @@ const routes = deepClone([...constantRoutes, ...asyncRoutes])
 
 const roles = [
   {
-    key: 'admin',
-    name: 'admin',
-    description: 'Super Administrator. Have access to view all pages.',
+    key: 'system',
+    name: 'system',
+    description: '系统管理员',
     routes: routes
   },
   {
-    key: 'editor',
-    name: 'editor',
-    description: 'Normal Editor. Can see all pages except permission page',
+    key: 'safety',
+    name: 'safety',
+    description: '安全管理员',
     routes: routes.filter(i => i.path !== '/permission')// just a mock
   },
   {
-    key: 'visitor',
-    name: 'visitor',
-    description: 'Just a visitor. Can only see the home page and the document page',
+    key: 'audit',
+    name: 'audit',
+    description: '审计员',
     routes: [{
       path: '',
       redirect: 'dashboard',
@@ -32,6 +32,12 @@ const roles = [
         }
       ]
     }]
+  },
+  {
+    key: 'confidentiality',
+    name: 'confidentiality',
+    description: '定密责任人',
+    routes: routes
   }
 ]
 
